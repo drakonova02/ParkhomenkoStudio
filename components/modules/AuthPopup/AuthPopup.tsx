@@ -23,14 +23,8 @@ const AuthPopup = () => {
       </div>
       <div className={`auth-popup__card ${isAuthSwitched ? 'switched' : ''}`}>
         <div className='auth-popup__card__inner'>
-          <AuthPopupRegistration
-            toggleAuth={toggleAuth}
-            isSideActive={isSignupActive}
-          />
-          <AuthPopupLogin
-            toggleAuth={toggleAuth}
-            isSideActive={isSignInActive}
-          />
+          <AuthPopupRegistration toggleAuth={toggleAuth} isSideActive={isSignupActive} />
+          <AuthPopupLogin toggleAuth={toggleAuth} isSideActive={isSignInActive} />
         </div>
       </div>
     </div>

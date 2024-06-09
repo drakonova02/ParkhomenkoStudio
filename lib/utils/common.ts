@@ -2,12 +2,7 @@ import { EventCallable } from 'effector'
 import toast from 'react-hot-toast'
 import { closeAuthPopup, openAuthPopup, setIsAuth } from '@/context/auth'
 import { setCurrentProduct } from '@/context/goods'
-import {
-  closeSearchModal,
-  closeAuthModal,
-  closeMinicart,
-  closeShareModal,
-} from '@/context/modals'
+import { closeSearchModal, closeAuthModal, closeMinicart, closeShareModal } from '@/context/modals'
 import { loginCheck } from '@/context/user'
 import { ICartItem } from '@/types/cart'
 import { IProduct } from '@/types/common'
@@ -24,8 +19,7 @@ export const addOverflowHiddenToBody = (paddingRight = '') => {
 }
 
 export const getWindowWidth = () => {
-  const { innerWidth: windowWidth } =
-    typeof window !== 'undefined' ? window : { innerWidth: 0 }
+  const { innerWidth: windowWidth } = typeof window !== 'undefined' ? window : { innerWidth: 0 }
 
   return { windowWidth }
 }
@@ -52,35 +46,17 @@ export const shuffle = <T>(array: T[]) => {
   while (currentIndex != 0) {
     randomIndex = Math.floor(Math.random() * currentIndex)
     currentIndex--
-    ;[array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ]
+    ;[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
   }
 
   return array
 }
 
-export const formatPrice = (x: number) =>
-  x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+export const formatPrice = (x: number) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 
 export const idGenerator = () => {
-  const S4 = () =>
-    (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
-  return (
-    S4() +
-    S4() +
-    '-' +
-    S4() +
-    '-' +
-    S4() +
-    '-' +
-    S4() +
-    '-' +
-    S4() +
-    S4() +
-    S4()
-  )
+  const S4 = () => (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+  return S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4()
 }
 
 export const handleOpenAuthPopup = () => {
@@ -114,8 +90,7 @@ export const triggerLoginCheck = () => {
   loginCheck({ jwt: auth.accessToken })
 }
 
-export const isItemInList = (array: ICartItem[], productId: string) =>
-  array.some((item) => item.productId === productId)
+export const isItemInList = (array: ICartItem[], productId: string) => array.some((item) => item.productId === productId)
 
 // export const getCartItemCountBySize = (
 //   cartItems: ICartItem[],
@@ -124,23 +99,14 @@ export const isItemInList = (array: ICartItem[], productId: string) =>
 //   cartItems.find((item) => item.size === currentSize.toLocaleLowerCase())
 //     ?.count || 0
 
-export const deleteProductFromLS = <T>(
-  id: string,
-  key: string,
-  event: EventCallable<T>,
-  setShouldShowEmpty: (arg0: boolean) => void,
-  message: string,
-  withToast = true
-) => {
+export const deleteProductFromLS = <T>(id: string, key: string, event: EventCallable<T>, setShouldShowEmpty: (arg0: boolean) => void, message: string, withToast = true) => {
   let items = JSON.parse(localStorage.getItem(key) as string)
 
   if (!items) {
     items = []
   }
 
-  const updatedItems = items.filter(
-    (item: { clientId: string }) => item.clientId !== id
-  )
+  const updatedItems = items.filter((item: { clientId: string }) => item.clientId !== id)
 
   localStorage.setItem(key, JSON.stringify(updatedItems))
   event(updatedItems)
@@ -167,8 +133,7 @@ export const showCountMessage = (count: string, lang: string) => {
   return lang === 'ru' ? 'товаров' : 'items'
 }
 
-export const checkOffsetParam = (offset: string | string[] | undefined) =>
-  offset && !isNaN(+offset) && +offset >= 0
+export const checkOffsetParam = (offset: string | string[] | undefined) => offset && !isNaN(+offset) && +offset >= 0
 
 export const getSearchParamsUrl = () => {
   const paramsString = window.location.search
@@ -177,19 +142,14 @@ export const getSearchParamsUrl = () => {
   return urlParams
 }
 
-export const updateSearchParam = (
-  key: string,
-  value: string | number,
-  pathname: string
-) => {
+export const updateSearchParam = (key: string, value: string | number, pathname: string) => {
   const urlParams = getSearchParamsUrl()
   urlParams.set(key, `${value}`)
   const newPath = `${pathname}?${urlParams.toString()}`
   window.history.pushState({ path: newPath }, '', newPath)
 }
 
-export const checkPriceParam = (price: number) =>
-  price && !isNaN(price) && price >= 0 && price <= 10000
+export const checkPriceParam = (price: number) => price && !isNaN(price) && price >= 0 && price <= 10000
 
 export const getCheckedArrayParam = (param: string) => {
   try {
@@ -203,13 +163,10 @@ export const getCheckedArrayParam = (param: string) => {
   }
 }
 
-export const capitalizeFirstLetter = (str: string) =>
-  str.charAt(0).toUpperCase() + str.slice(1)
+export const capitalizeFirstLetter = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 export const getWatchedProductFromLS = () => {
-  let watchedProducts: IProduct[] = JSON.parse(
-    localStorage.getItem('watched') as string
-  )
+  let watchedProducts: IProduct[] = JSON.parse(localStorage.getItem('watched') as string)
 
   if (!watchedProducts || !Array.isArray(watchedProducts)) {
     watchedProducts = []

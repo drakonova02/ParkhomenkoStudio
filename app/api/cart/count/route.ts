@@ -5,10 +5,7 @@ import { getAuthRouteData } from '@/lib/utils/api-routes'
 
 export async function PATCH(req: Request) {
   try {
-    const { db, reqBody, validatedTokenResult } = await getAuthRouteData(
-      clientPromise,
-      req
-    )
+    const { db, reqBody, validatedTokenResult } = await getAuthRouteData(clientPromise, req)
 
     if (validatedTokenResult.status !== 200) {
       return NextResponse.json(validatedTokenResult)

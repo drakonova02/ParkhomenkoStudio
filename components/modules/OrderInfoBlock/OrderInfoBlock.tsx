@@ -4,30 +4,14 @@ import { MutableRefObject, useRef, useState } from 'react'
 import { useLang } from '@/hooks/useLang'
 import { useTotalPrice } from '@/hooks/useTotalPrice'
 import { countWholeCartItemsAmount } from '@/lib/utils/cart'
-import {
-  formatPrice,
-  handleOpenAuthPopup,
-  isUserAuth,
-  showCountMessage,
-} from '@/lib/utils/common'
+import { formatPrice, handleOpenAuthPopup, isUserAuth, showCountMessage } from '@/lib/utils/common'
 import { IOrderInfoBlockProps } from '@/types/modules'
 import { useGoodsByAuth } from '@/hooks/useGoodsByAuth'
 import { $cart, $cartFromLs } from '@/context/cart'
-import {
-  makePayment,
-  makePaymentFx,
-  $chosenCourierAddressData,
-  $chosenPickupAddressData,
-  $onlinePaymentTab,
-  $orderDetailsValues,
-  $pickupTab,
-} from '@/context/order'
+import { makePayment, makePaymentFx, $chosenCourierAddressData, $chosenPickupAddressData, $onlinePaymentTab, $orderDetailsValues, $pickupTab } from '@/context/order'
 import toast from 'react-hot-toast'
 
-const OrderInfoBlock = ({
-  isCorrectPromotionalCode,
-  isOrderPage,
-}: IOrderInfoBlockProps) => {
+const OrderInfoBlock = ({ isCorrectPromotionalCode, isOrderPage }: IOrderInfoBlockProps) => {
   const { lang, translations } = useLang()
   const currentCartByAuth = useGoodsByAuth($cart, $cartFromLs)
   const [isUserAgree, setIsUserAgree] = useState(false)
@@ -38,9 +22,7 @@ const OrderInfoBlock = ({
   const chosenPickupAddressData = useUnit($chosenPickupAddressData)
   const paymentSpinner = useUnit(makePaymentFx.pending)
   const checkboxRef = useRef() as MutableRefObject<HTMLInputElement>
-  const priceWithDiscount = isCorrectPromotionalCode
-    ? formatPrice(Math.round(animatedPrice - animatedPrice * 0.3))
-    : formatPrice(animatedPrice)
+  const priceWithDiscount = isCorrectPromotionalCode ? formatPrice(Math.round(animatedPrice - animatedPrice * 0.3)) : formatPrice(animatedPrice)
   const orderDetailsValues = useUnit($orderDetailsValues)
 
   const handleAgreementChange = () => setIsUserAgree(!isUserAgree)
@@ -60,10 +42,7 @@ const OrderInfoBlock = ({
   }
 
   const handleMakePayment = async () => {
-    if (
-      !chosenCourierAddressData.address_line1 &&
-      !chosenPickupAddressData.address_line1
-    ) {
+    if (!chosenCourierAddressData.address_line1 && !chosenPickupAddressData.address_line1) {
       const orderBlock = document.querySelector('.order-block') as HTMLLIElement
       scrollToBlock(orderBlock)
       toast.error('Нужно выбрать адрес!')
@@ -71,9 +50,7 @@ const OrderInfoBlock = ({
     }
 
     if (!orderDetailsValues.isValid) {
-      const detailsBlock = document.querySelector(
-        '.details-block'
-      ) as HTMLLIElement
+      const detailsBlock = document.querySelector('.details-block') as HTMLLIElement
       scrollToBlock(detailsBlock)
       return
     }
@@ -110,35 +87,18 @@ const OrderInfoBlock = ({
     <div>
       <div>
         <p>
-          {countWholeCartItemsAmount(currentCartByAuth)}{' '}
-          {showCountMessage(
-            `${countWholeCartItemsAmount(currentCartByAuth)}`,
-            lang
-          )}{' '}
-          {translations[lang].order.worth}{' '}
-          <span>{formatPrice(animatedPrice)} ₽</span>
+          {countWholeCartItemsAmount(currentCartByAuth)} {showCountMessage(`${countWholeCartItemsAmount(currentCartByAuth)}`, lang)} {translations[lang].order.worth} <span>{formatPrice(animatedPrice)} ₽</span>
         </p>
         <p>
-          {translations[lang].order.amount_with_discounts}:{' '}
-          <span>{priceWithDiscount} ₽</span>
+          {translations[lang].order.amount_with_discounts}: <span>{priceWithDiscount} ₽</span>
         </p>
         {isOrderPage && (
           <>
             <p>
-              {translations[lang].order.delivery}:{' '}
-              <span>
-                {pickupTab
-                  ? translations[lang].order.pickup_free
-                  : translations[lang].order.courier_delivery}
-              </span>
+              {translations[lang].order.delivery}: <span>{pickupTab ? translations[lang].order.pickup_free : translations[lang].order.courier_delivery}</span>
             </p>
             <p>
-              {translations[lang].order.payment}:{' '}
-              <span>
-                {onlinePaymentTab
-                  ? translations[lang].order.online_payment
-                  : translations[lang].order.upon_receipt}
-              </span>
+              {translations[lang].order.payment}: <span>{onlinePaymentTab ? translations[lang].order.online_payment : translations[lang].order.upon_receipt}</span>
             </p>
           </>
         )}
@@ -147,38 +107,20 @@ const OrderInfoBlock = ({
           <span>{priceWithDiscount} ₽</span>
         </p>
         {isOrderPage ? (
-          <button
-            className={`btn-reset`}
-            disabled={
-              !isUserAgree || !currentCartByAuth.length || paymentSpinner
-            }
-            onClick={handleMakePayment}
-          >
+          <button className={`btn-reset`} disabled={!isUserAgree || !currentCartByAuth.length || paymentSpinner} onClick={handleMakePayment}>
             {translations[lang].order.make_order}
           </button>
         ) : (
-          <Link
-            href='/order'
-            className={`${!isUserAgree || !currentCartByAuth.length ? 'disabled' : ''}`}
-          >
+          <Link href='/order' className={`${!isUserAgree || !currentCartByAuth.length ? 'disabled' : ''}`}>
             {translations[lang].order.make_order}
           </Link>
         )}
         <label>
-          <input
-            type='checkbox'
-            tabIndex={-1}
-            ref={checkboxRef}
-            onChange={handleAgreementChange}
-            checked={isUserAgree}
-          />
+          <input type='checkbox' tabIndex={-1} ref={checkboxRef} onChange={handleAgreementChange} checked={isUserAgree} />
           <span />
           <span tabIndex={0} onKeyDown={handleTabCheckbox} />
           <span>
-            {translations[lang].order.agreement_text}{' '}
-            <Link href='/privacy'>
-              {translations[lang].order.agreement_link}
-            </Link>
+            {translations[lang].order.agreement_text} <Link href='/privacy'>{translations[lang].order.agreement_link}</Link>
           </span>
         </label>
       </div>

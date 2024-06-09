@@ -17,9 +17,7 @@ const Navigation = () => {
           <Link href='/blog'>{translations[lang].main_menu.blog}</Link>
         </li>
         <li>
-          <Link href='/exhibition'>
-            {translations[lang].main_menu.exhibition}
-          </Link>
+          <Link href='/exhibition'>{translations[lang].main_menu.exhibition}</Link>
         </li>
         <li>
           <Link href='/about'>{translations[lang].main_menu.about}</Link>

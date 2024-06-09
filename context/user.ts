@@ -31,9 +31,7 @@ export const loginCheckFx = createEffect(async ({ jwt }: { jwt: string }) => {
   }
 })
 
-export const $user = user
-  .createStore<IUser>({} as IUser)
-  .on(loginCheckFx.done, (_, { result }) => result)
+export const $user = user.createStore<IUser>({} as IUser).on(loginCheckFx.done, (_, { result }) => result)
 
 sample({
   clock: loginCheck,

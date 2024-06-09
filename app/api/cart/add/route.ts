@@ -5,10 +5,7 @@ import { getAuthRouteData, parseJwt } from '@/lib/utils/api-routes'
 
 export async function POST(req: Request) {
   try {
-    const { db, validatedTokenResult, reqBody, token } = await getAuthRouteData(
-      clientPromise,
-      req
-    )
+    const { db, validatedTokenResult, reqBody, token } = await getAuthRouteData(clientPromise, req)
 
     if (validatedTokenResult.status !== 200) {
       return NextResponse.json(validatedTokenResult)
@@ -21,12 +18,8 @@ export async function POST(req: Request) {
       })
     }
 
-    const user = await db
-      .collection('users')
-      .findOne({ email: parseJwt(token as string).email })
-    const productItem = await db
-      .collection(reqBody.category)
-      .findOne({ _id: new ObjectId(reqBody.productId) })
+    const user = await db.collection('users').findOne({ email: parseJwt(token as string).email })
+    const productItem = await db.collection(reqBody.category).findOne({ _id: new ObjectId(reqBody.productId) })
 
     if (!productItem) {
       return NextResponse.json({

@@ -4,11 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { EarthoOneProvider } from '@eartho/one-client-react'
 import { Next13ProgressBar } from 'next13-progressbar'
 import Layout from './Layout'
-import {
-  handleCloseAuthPopup,
-  handleCloseShareModal,
-  removeOverflowHiddenFromBody,
-} from '@/lib/utils/common'
+import { handleCloseAuthPopup, handleCloseShareModal, removeOverflowHiddenFromBody } from '@/lib/utils/common'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 // import CookieAlert from '../modules/CookieAlert/CookieAlert'
@@ -31,33 +27,19 @@ const PagesLayout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const checkCookie = document.cookie.indexOf('CookieBy=Parkhomenko')
-    checkCookie != -1
-      ? setCookieAlertOpen(false)
-      : setTimeout(() => setCookieAlertOpen(true), 3000)
+    checkCookie != -1 ? setCookieAlertOpen(false) : setTimeout(() => setCookieAlertOpen(true), 3000)
   }, [])
 
   return (
     <>
       {isClient ? (
-        <EarthoOneProvider
-          clientId={`${process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID}`}
-        >
+        <EarthoOneProvider clientId={`${process.env.NEXT_PUBLIC_OAUTH_CLIENT_ID}`}>
           <html lang='en'>
             <body>
               <Next13ProgressBar height='4px' color='#9466FF' showOnShallow />
               <Layout>{children}</Layout>
-              <div
-                className={`auth-overlay ${
-                  openAuthPopup ? 'overlay-active' : ''
-                }`}
-                onClick={handleCloseAuthPopup}
-              />
-              <div
-                className={`share-overlay ${
-                  shareModal ? 'overlay-active' : ''
-                }`}
-                onClick={handleCloseShareModal}
-              />
+              <div className={`auth-overlay ${openAuthPopup ? 'overlay-active' : ''}`} onClick={handleCloseAuthPopup} />
+              <div className={`share-overlay ${shareModal ? 'overlay-active' : ''}`} onClick={handleCloseShareModal} />
               {/* {cookieAlertOpen && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}

@@ -11,26 +11,16 @@ const AboutUs = () => {
     <section className='homepage-about'>
       <div className='img-wrap'>
         <picture>
-          <Image
-            src={img}
-            alt={translations[lang].main_page.banner_title}
-            loading='eager'
-          />
+          <Image src={img} alt={translations[lang].main_page.banner_title} loading='eager' />
         </picture>
       </div>
 
       <div className='holder-text'>
         <h3>{translations[lang].main_menu.about_me}</h3>
         <h2 className='about-title'>ParkhomenkoStudia</h2>
-        <p className='about-text'>
-          {translations[lang].main_page.about_us_text_1}
-        </p>
-        <p className='about-text'>
-          {translations[lang].main_page.about_us_text_2}
-        </p>
-        <p className='about-text'>
-          {translations[lang].main_page.about_us_text_3}
-        </p>
+        <p className='about-text'>{translations[lang].main_page.about_us_text_1}</p>
+        <p className='about-text'>{translations[lang].main_page.about_us_text_2}</p>
+        <p className='about-text'>{translations[lang].main_page.about_us_text_3}</p>
         <Link className='action primary' href='/about'>
           {translations[lang].common.more}
         </Link>

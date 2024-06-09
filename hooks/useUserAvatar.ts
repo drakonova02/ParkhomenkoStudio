@@ -12,11 +12,7 @@ export const useUserAvatar = () => {
       return
     }
 
-    const oauthAvatar = JSON.parse(
-      localStorage.getItem(
-        '@@earthoOnespajs@@::l3Q4jO58IChQRwUkzkHI::default::undefined'
-      ) as string
-    )
+    const oauthAvatar = JSON.parse(localStorage.getItem('@@earthoOnespajs@@::l3Q4jO58IChQRwUkzkHI::default::undefined') as string)
 
     if (!oauthAvatar) {
       return

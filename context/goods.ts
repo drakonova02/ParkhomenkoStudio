@@ -5,11 +5,7 @@ import { Gate } from 'effector-react'
 import toast from 'react-hot-toast'
 import { IProduct } from '@/types/common'
 import { IProducts } from '@/types/goods'
-import {
-  ILoadOneProductFx,
-  ILoadProductsByFilterFx,
-  ILoadWatchedProductsFx,
-} from '@/types/goods'
+import { ILoadOneProductFx, ILoadProductsByFilterFx, ILoadWatchedProductsFx } from '@/types/goods'
 import api from '@/api/apiInstance'
 import { getNewProductsFx, getRecentBlogFx } from '@/api/main-page'
 
@@ -33,76 +29,53 @@ export const loadWatchedProducts = goods.createEvent<ILoadWatchedProductsFx>()
 export const $newProducts = goodsStoreInstance(getNewProductsFx)
 export const $recentBlog = goodsStoreInstance(getRecentBlogFx)
 
-export const loadOneProductFx = createEffect(
-  async ({ productId, category, setSpinner }: ILoadOneProductFx) => {
-    try {
-      setSpinner && setSpinner(true)
-      const { data } = await api.post('/api/goods/one', { productId, category })
+export const loadOneProductFx = createEffect(async ({ productId, category, setSpinner }: ILoadOneProductFx) => {
+  try {
+    setSpinner && setSpinner(true)
+    const { data } = await api.post('/api/goods/one', { productId, category })
 
-      if (data?.message === 'Wrong product id') {
-        return { productItem: { errorMessage: 'Wrong product id' } }
-      }
-
-      return data
-    } catch (error) {
-      toast.error((error as Error).message)
-    } finally {
-      setSpinner && setSpinner(false)
+    if (data?.message === 'Wrong product id') {
+      return { productItem: { errorMessage: 'Wrong product id' } }
     }
+
+    return data
+  } catch (error) {
+    toast.error((error as Error).message)
+  } finally {
+    setSpinner && setSpinner(false)
   }
-)
+})
 
-export const loadProductsByFilterFx = createEffect(
-  async ({
-    limit,
-    offset,
-    category,
-    isCatalog,
-    additionalParam,
-  }: ILoadProductsByFilterFx) => {
-    try {
-      const { data } = await api.get(
-        `/api/goods/filter?limit=${limit}&offset=${offset}&category=${category}&${additionalParam}${
-          isCatalog ? '&catalog=true' : ''
-        }`
-      )
+export const loadProductsByFilterFx = createEffect(async ({ limit, offset, category, isCatalog, additionalParam }: ILoadProductsByFilterFx) => {
+  try {
+    const { data } = await api.get(`/api/goods/filter?limit=${limit}&offset=${offset}&category=${category}&${additionalParam}${isCatalog ? '&catalog=true' : ''}`)
 
-      return data
-    } catch (error) {
-      toast.error((error as Error).message)
-    }
+    return data
+  } catch (error) {
+    toast.error((error as Error).message)
   }
-)
+})
 
-export const loadWatchedProductsFx = createEffect(
-  async ({ payload }: ILoadWatchedProductsFx) => {
-    try {
-      const { data } = await api.post('/api/goods/watched', { payload })
+export const loadWatchedProductsFx = createEffect(async ({ payload }: ILoadWatchedProductsFx) => {
+  try {
+    const { data } = await api.post('/api/goods/watched', { payload })
 
-      return data
-    } catch (error) {
-      toast.error((error as Error).message)
-    }
+    return data
+  } catch (error) {
+    toast.error((error as Error).message)
   }
-)
+})
 
 export const $currentProduct = goods
   .createStore<IProduct>({} as IProduct)
   .on(setCurrentProduct, (_, product) => product)
   .on(loadOneProductFx.done, (_, { result }) => result.productItem)
 
-export const $products = goods
-  .createStore<IProducts>({} as IProducts)
-  .on(loadProductsByFilterFx.done, (_, { result }) => result)
+export const $products = goods.createStore<IProducts>({} as IProducts).on(loadProductsByFilterFx.done, (_, { result }) => result)
 
-export const $watchedProducts = goods
-  .createStore<IProducts>({} as IProducts)
-  .on(loadWatchedProductsFx.done, (_, { result }) => result)
+export const $watchedProducts = goods.createStore<IProducts>({} as IProducts).on(loadWatchedProductsFx.done, (_, { result }) => result)
 
-const goodsSampleInstance = (
-  effect: Effect<void, [], Error>,
-  gate: Gate<unknown>
-) =>
+const goodsSampleInstance = (effect: Effect<void, [], Error>, gate: Gate<unknown>) =>
   sample({
     clock: gate.open,
     target: effect,

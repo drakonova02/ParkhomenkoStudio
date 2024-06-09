@@ -9,10 +9,7 @@ export const onAuthSuccess = <T>(message: string, data: T) => {
   setIsAuth(true)
 }
 
-export const nameValidationRules = (
-  message: string,
-  requireMessage?: string
-) => ({
+export const nameValidationRules = (message: string, requireMessage?: string) => ({
   ...(requireMessage && { required: requireMessage }),
   pattern: {
     value: /^[а-яА-Яa-zA-ZёЁ]*$/,
@@ -22,10 +19,7 @@ export const nameValidationRules = (
   maxLength: 15,
 })
 
-export const emailValidationRules = (
-  message: string,
-  requireMessage?: string
-) => ({
+export const emailValidationRules = (message: string, requireMessage?: string) => ({
   ...(requireMessage && { required: requireMessage }),
   pattern: {
     value: /\S+@\S+\.\S+/,

@@ -1,27 +1,9 @@
-const AuthPopupSocials = ({
-  handleSignupWithOAuth,
-}: {
-  handleSignupWithOAuth: VoidFunction
-}) => (
-  <button
-    className='btn-reset socials__btn g-color'
-    onClick={handleSignupWithOAuth}
-  >
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      xmlnsXlink='http://www.w3.org/1999/xlink'
-      width='36'
-      height='35'
-      fill='none'
-    >
+const AuthPopupSocials = ({ handleSignupWithOAuth }: { handleSignupWithOAuth: VoidFunction }) => (
+  <button className='btn-reset socials__btn g-color' onClick={handleSignupWithOAuth}>
+    <svg xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink' width='36' height='35' fill='none'>
       <path fill='url(#a)' d='M0 0h35.3v35H0z' />
       <defs>
-        <pattern
-          id='a'
-          width='1'
-          height='1'
-          patternContentUnits='objectBoundingBox'
-        >
+        <pattern id='a' width='1' height='1' patternContentUnits='objectBoundingBox'>
           <use xlinkHref='#b' transform='matrix(.00195 0 0 .00197 0 0)' />
         </pattern>
         <image

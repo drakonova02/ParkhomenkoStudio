@@ -8,8 +8,7 @@ export async function GET(req: Request) {
     const { db } = await getDbAndReqBody(clientPromise, null)
     const url = new URL(req.url)
     const rangeParam = url.searchParams.get('range') || JSON.stringify([0, 4])
-    const sortParam =
-      url.searchParams.get('sort') || JSON.stringify(['name', 'ASC'])
+    const sortParam = url.searchParams.get('sort') || JSON.stringify(['name', 'ASC'])
     const range = JSON.parse(rangeParam)
     const sort = JSON.parse(sortParam)
 
@@ -42,9 +41,7 @@ export async function GET(req: Request) {
     return NextResponse.json(
       {
         count: allGoods.length,
-        items: allGoods
-          .slice(range[0], range[1])
-          .map((item) => ({ ...item, id: item._id })),
+        items: allGoods.slice(range[0], range[1]).map((item) => ({ ...item, id: item._id })),
       },
       corsHeaders
     )

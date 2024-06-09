@@ -8,55 +8,35 @@ import Image from 'next/image'
 import img from '@/public/img/banner/Пархоменко_Ранок_2006,_20_30,_ДВП,_олія.jpg'
 import { forwardRef } from 'react'
 
-const HeaderProfile = forwardRef<HTMLDivElement, IWrappedComponentProps>(
-  ({ open, setOpen }, ref) => {
-    const handleTogglePopup = () => setOpen(!open)
-    const handleLogout = useUserLogout()
-    const { src, alt } = useUserAvatar()
-    const { lang, translations } = useLang()
+const HeaderProfile = forwardRef<HTMLDivElement, IWrappedComponentProps>(({ open, setOpen }, ref) => {
+  const handleTogglePopup = () => setOpen(!open)
+  const handleLogout = useUserLogout()
+  const { src, alt } = useUserAvatar()
+  const { lang, translations } = useLang()
 
-    return (
-      <div className='header-profile__popup' ref={ref}>
-        <button
-          className='btn-reset header-profile__btn'
-          onClick={handleTogglePopup}
-        >
-          <Image
-            src={src ? src : img}
-            alt={alt ? alt : 'profile'}
-            width={24}
-            height={24}
-          />
-        </button>
-        <AnimatePresence>
-          {open && (
-            <motion.ul
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              className='list-reset header-profile__inner'
-            >
-              <li className='header-profile__arrow' />
-              <li className='header-profile__item'>
-                <button className='btn-reset header-profile__item__btn'>
-                  {translations[lang].header.profile}
-                </button>
-              </li>
-              <li className='header-profile__item'>
-                <button
-                  className='btn-reset header-profile__item__btn'
-                  onClick={handleLogout}
-                >
-                  {translations[lang].header.logout}
-                </button>
-              </li>
-            </motion.ul>
-          )}
-        </AnimatePresence>
-      </div>
-    )
-  }
-)
+  return (
+    <div className='header-profile__popup' ref={ref}>
+      <button className='btn-reset header-profile__btn' onClick={handleTogglePopup}>
+        <Image src={src ? src : img} alt={alt ? alt : 'profile'} width={24} height={24} />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.ul initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} className='list-reset header-profile__inner'>
+            <li className='header-profile__arrow' />
+            <li className='header-profile__item'>
+              <button className='btn-reset header-profile__item__btn'>{translations[lang].header.profile}</button>
+            </li>
+            <li className='header-profile__item'>
+              <button className='btn-reset header-profile__item__btn' onClick={handleLogout}>
+                {translations[lang].header.logout}
+              </button>
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+})
 
 HeaderProfile.displayName = 'HeaderProfile'
 

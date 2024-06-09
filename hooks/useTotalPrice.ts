@@ -9,16 +9,9 @@ export const useTotalPrice = () => {
   const totalPrice = useUnit($totalPrice)
   const currentCartByAuth = useGoodsByAuth($cart, $cartFromLs)
 
-  const getNewTotal = () =>
-    currentCartByAuth
-      .map((item) => +item.price * +item.count)
-      .reduce((defaultCount, item) => defaultCount + item, 0)
+  const getNewTotal = () => currentCartByAuth.map((item) => +item.price * +item.count).reduce((defaultCount, item) => defaultCount + item, 0)
 
-  const {
-    value: animatedPrice,
-    setFrom,
-    setTo,
-  } = usePriceAnimation(totalPrice, getNewTotal())
+  const { value: animatedPrice, setFrom, setTo } = usePriceAnimation(totalPrice, getNewTotal())
 
   useEffect(() => {
     setTotalPrice(getNewTotal())

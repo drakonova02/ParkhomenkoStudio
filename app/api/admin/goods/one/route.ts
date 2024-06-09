@@ -22,9 +22,7 @@ export async function GET(req: Request) {
       )
     }
 
-    const productItem = await db
-      .collection(category as string)
-      .findOne({ _id: new ObjectId(id as string) })
+    const productItem = await db.collection(category as string).findOne({ _id: new ObjectId(id as string) })
 
     return NextResponse.json(
       {

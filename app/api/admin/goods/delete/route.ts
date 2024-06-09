@@ -11,9 +11,7 @@ export async function GET(req: Request) {
     const id = url.searchParams.get('id')
     const category = url.searchParams.get('category')
 
-    await db
-      .collection(category as string)
-      .deleteOne({ _id: new ObjectId(id as string) })
+    await db.collection(category as string).deleteOne({ _id: new ObjectId(id as string) })
 
     return NextResponse.json(
       {

@@ -3,12 +3,7 @@ import ContentLinks from './ContentLinks'
 import ContentTitle from './ContentTitle'
 import { useLang } from '@/hooks/useLang'
 
-const EmptyPageContent = ({
-  description,
-  btnText,
-  title,
-  oopsWord,
-}: IEmptyPageContentProps) => {
+const EmptyPageContent = ({ description, btnText, title, oopsWord }: IEmptyPageContentProps) => {
   const { lang, translations } = useLang()
   const currentTitle = title ? title : translations[lang].common.empty_text
   const currentOopsWord = oopsWord ? oopsWord : translations[lang].common.oh

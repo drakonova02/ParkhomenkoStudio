@@ -1,12 +1,7 @@
 /* eslint-disable indent */
 import { JWTError } from '@/constants/jwt'
 import { refreshTokenFx } from '@/context/auth'
-import {
-  addProductToCartFx,
-  addProductsFromLSToCartFx,
-  deleteCartItemFx,
-  getCartItemsFx,
-} from '@/context/cart'
+import { addProductToCartFx, addProductsFromLSToCartFx, deleteCartItemFx, getCartItemsFx } from '@/context/cart'
 // import {
 //   addProductToFavoriteFx,
 //   addProductsFromLSToFavoritesFx,
@@ -14,11 +9,7 @@ import {
 //   getFavoriteItemsFx,
 // } from '@/context/favorites'
 import { loginCheckFx } from '@/context/user'
-import {
-  IAddProductToCartFx,
-  IAddProductsFromLSToCartFx,
-  IDeleteCartItemsFx,
-} from '@/types/cart'
+import { IAddProductToCartFx, IAddProductsFromLSToCartFx, IDeleteCartItemsFx } from '@/types/cart'
 // import {
 //   IAddProductToComparisonFx,
 //   IAddProductsFromLSToComparisonFx,

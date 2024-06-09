@@ -24,20 +24,12 @@ const Minicart = () => {
         <AnimatePresence>
           {currentCartByAuth.length ? (
             currentCartByAuth.map((item) => (
-              <motion.li
-                key={item._id || item.clientId}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className='cart-list__item'
-              >
+              <motion.li key={item._id || item.clientId} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className='cart-list__item'>
                 <MinicartItem item={item} />
               </motion.li>
             ))
           ) : (
-            <li className='empty-cart'>
-              {translations[lang].common.cart_empty}
-            </li>
+            <li className='empty-cart'>{translations[lang].common.cart_empty}</li>
           )}
         </AnimatePresence>
       </ul>

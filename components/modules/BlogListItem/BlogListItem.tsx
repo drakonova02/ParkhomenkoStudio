@@ -17,9 +17,7 @@ const BlogListItem = ({ item }: IBlogListItemProps) => {
           <strong className='blog-category'>{item.category}</strong>
           <div>
             <h3 className='blog-title'>
-              <Link href={`/blog/${item.category}/${item._id}`}>
-                {item.name}
-              </Link>
+              <Link href={`/blog/${item.category}/${item._id}`}>{item.name}</Link>
             </h3>
             <p className='blog-text'>{item.description}</p>
             <span className='blog-author'>{item.author}</span>

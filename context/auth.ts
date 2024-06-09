@@ -13,83 +13,77 @@ export const handleSignUp = auth.createEvent<ISignUpFx>()
 export const handleSignIn = auth.createEvent<ISignUpFx>()
 export const setIsAuth = auth.createEvent<boolean>()
 
-export const oauthFx = createEffect(
-  async ({ name, password, email }: ISignUpFx) => {
-    try {
-      const { data } = await api.post('/api/users/oauth', {
-        name,
-        password,
-        email,
-      })
-
-      await api.post('/api/users/email', {
-        password,
-        email,
-      })
-
-      onAuthSuccess('SingUp!', data)
-      return data.user
-    } catch (error) {
-      toast.error((error as Error).message)
-    }
-  }
-)
-
-export const singUpFx = createEffect(
-  async ({ name, password, email, isOAuth }: ISignUpFx) => {
-    if (isOAuth) {
-      await oauthFx({
-        email,
-        password,
-        name,
-      })
-      return
-    }
-
-    const { data } = await api.post('/api/users/signup', {
+export const oauthFx = createEffect(async ({ name, password, email }: ISignUpFx) => {
+  try {
+    const { data } = await api.post('/api/users/oauth', {
       name,
       password,
       email,
     })
-
-    if (data.warningMessage) {
-      toast.error(data.warningMessage)
-      return
-    }
 
     await api.post('/api/users/email', {
       password,
       email,
     })
 
-    onAuthSuccess('Login!', data)
-
-    return data
-  }
-)
-
-export const singInFx = createEffect(
-  async ({ email, password, isOAuth }: ISignUpFx) => {
-    if (isOAuth) {
-      await oauthFx({
-        email,
-        password,
-      })
-      return
-    }
-
-    const { data } = await api.post('/api/users/login', { email, password })
-
-    if (data.warningMessage) {
-      toast.error(data.warningMessage)
-      return
-    }
-
     onAuthSuccess('SingUp!', data)
-
-    return data
+    return data.user
+  } catch (error) {
+    toast.error((error as Error).message)
   }
-)
+})
+
+export const singUpFx = createEffect(async ({ name, password, email, isOAuth }: ISignUpFx) => {
+  if (isOAuth) {
+    await oauthFx({
+      email,
+      password,
+      name,
+    })
+    return
+  }
+
+  const { data } = await api.post('/api/users/signup', {
+    name,
+    password,
+    email,
+  })
+
+  if (data.warningMessage) {
+    toast.error(data.warningMessage)
+    return
+  }
+
+  await api.post('/api/users/email', {
+    password,
+    email,
+  })
+
+  onAuthSuccess('Login!', data)
+
+  return data
+})
+
+export const singInFx = createEffect(async ({ email, password, isOAuth }: ISignUpFx) => {
+  if (isOAuth) {
+    await oauthFx({
+      email,
+      password,
+    })
+    return
+  }
+
+  const { data } = await api.post('/api/users/login', { email, password })
+
+  if (data.warningMessage) {
+    toast.error(data.warningMessage)
+    return
+  }
+
+  onAuthSuccess('SingUp!', data)
+
+  return data
+})
 
 export const refreshTokenFx = createEffect(async ({ jwt }: { jwt: string }) => {
   const { data } = await api.post('/api/users/refresh', { jwt })
@@ -104,9 +98,7 @@ export const $openAuthPopup = auth
   .on(openAuthPopup, () => true)
   .on(closeAuthPopup, () => false)
 
-export const $isAuth = auth
-  .createStore(false)
-  .on(setIsAuth, (_, isAuth) => isAuth)
+export const $isAuth = auth.createStore(false).on(setIsAuth, (_, isAuth) => isAuth)
 
 export const $auth = auth
   .createStore({})

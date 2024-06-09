@@ -23,8 +23,7 @@ const CartPage = () => {
   const currentCartByAuth = useGoodsByAuth($cart, $cartFromLs)
   const { lang, translations } = useLang()
   const isMedia930 = useMediaQuery(930)
-  const [isCorrectPromotionalCode, setIsCorrectPromotionalCode] =
-    useState(false)
+  const [isCorrectPromotionalCode, setIsCorrectPromotionalCode] = useState(false)
   const shouldShowEmpty = useUnit($shouldShowEmpty)
   const loginCheckSpinner = useUnit(loginCheckFx.pending)
 
@@ -33,16 +32,10 @@ const CartPage = () => {
       {!shouldShowEmpty ? (
         <section>
           <div className='container'>
-            <HeadingWithCount
-              count={countWholeCartItemsAmount(currentCartByAuth)}
-              title={translations[lang].breadcrumbs.cart}
-              spinner={cartSpinner}
-            />
+            <HeadingWithCount count={countWholeCartItemsAmount(currentCartByAuth)} title={translations[lang].breadcrumbs.cart} spinner={cartSpinner} />
             <div>
               <div>
-                {(isUserAuth()
-                  ? cartSpinner || loginCheckSpinner
-                  : cartSpinner) && (
+                {(isUserAuth() ? cartSpinner || loginCheckSpinner : cartSpinner) && (
                   <motion.ul {...basePropsForMotion}>
                     {Array.from(new Array(3)).map((_, i) => (
                       <li key={i}>
@@ -58,33 +51,19 @@ const CartPage = () => {
                 )}
               </div>
               <div>
-                {isMedia930 && (
-                  <PromotionalCode
-                    setIsCorrectPromotionalCode={setIsCorrectPromotionalCode}
-                  />
-                )}
+                {isMedia930 && <PromotionalCode setIsCorrectPromotionalCode={setIsCorrectPromotionalCode} />}
                 <div>
-                  <OrderInfoBlock
-                    isCorrectPromotionalCode={isCorrectPromotionalCode}
-                  />
+                  <OrderInfoBlock isCorrectPromotionalCode={isCorrectPromotionalCode} />
                 </div>
               </div>
             </div>
-            {!isMedia930 && (
-              <PromotionalCode
-                setIsCorrectPromotionalCode={setIsCorrectPromotionalCode}
-              />
-            )}
+            {!isMedia930 && <PromotionalCode setIsCorrectPromotionalCode={setIsCorrectPromotionalCode} />}
           </div>
         </section>
       ) : (
         <section>
           <div className='container'>
-            <EmptyPageContent
-              subtitle={translations[lang].common.cart_empty}
-              description={translations[lang].common.cart_empty_advice}
-              btnText={translations[lang].common.go_shopping}
-            />
+            <EmptyPageContent subtitle={translations[lang].common.cart_empty} description={translations[lang].common.cart_empty_advice} btnText={translations[lang].common.go_shopping} />
           </div>
         </section>
       )}

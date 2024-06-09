@@ -7,11 +7,7 @@ const ProductAvailable = ({ vendorCode, inStock }: IProductAvailableProps) => {
 
   return (
     <div className='detail'>
-      <span className='available'>
-        {isInStock
-          ? translations[lang].product.available
-          : translations[lang].product.not_available}
-      </span>
+      <span className='available'>{isInStock ? translations[lang].product.available : translations[lang].product.not_available}</span>
       <span>
         {translations[lang].product.vendor_code}
         .: {vendorCode}

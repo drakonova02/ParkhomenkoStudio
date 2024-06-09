@@ -17,14 +17,9 @@ const ProductsListItem = ({ item }: IProductsListItemProps) => {
         </Link>
         <div>
           <h3 className='product-title'>
-            <Link href={`/catalog/${item.category}/${item._id}`}>
-              {item.name}
-            </Link>
+            <Link href={`/catalog/${item.category}/${item._id}`}>{item.name}</Link>
           </h3>
-          <ProductAvailable
-            vendorCode={item.vendorCode}
-            inStock={+item.inStock}
-          />
+          <ProductAvailable vendorCode={item.vendorCode} inStock={+item.inStock} />
           <span>{formatPrice(+item.price)} $</span>
         </div>
       </li>

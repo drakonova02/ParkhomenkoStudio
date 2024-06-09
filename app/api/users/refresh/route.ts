@@ -1,11 +1,6 @@
 import jwt, { VerifyErrors } from 'jsonwebtoken'
 import clientPromise from '@/lib/mongodb'
-import {
-  getDbAndReqBody,
-  findUserByEmail,
-  parseJwt,
-  generateTokens,
-} from '@/lib/utils/api-routes'
+import { getDbAndReqBody, findUserByEmail, parseJwt, generateTokens } from '@/lib/utils/api-routes'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
@@ -18,38 +13,34 @@ export async function POST(req: Request) {
       let tokens = {}
       let error = null
 
-      await jwt.verify(
-        refreshToken,
-        process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY as string,
-        async (err: VerifyErrors | null) => {
-          const user = await findUserByEmail(db, parseJwt(reqBody.jwt).email)
+      await jwt.verify(refreshToken, process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY as string, async (err: VerifyErrors | null) => {
+        const user = await findUserByEmail(db, parseJwt(reqBody.jwt).email)
 
-          if (!user) {
-            error = { message: 'Invalid jwt token' }
-            return
-          }
-
-          if (err) {
-            if (err.name === 'TokenExpiredError') {
-              tokens = generateTokens(user.name, user.email)
-            }
-
-            error = err
-            return
-          }
-
-          accessToken = jwt.sign(
-            {
-              name: user.name,
-              email: user.email,
-            },
-            process.env.NEXT_PUBLIC_ACCESS_TOKEN_KEY as string,
-            {
-              expiresIn: '10m',
-            }
-          )
+        if (!user) {
+          error = { message: 'Invalid jwt token' }
+          return
         }
-      )
+
+        if (err) {
+          if (err.name === 'TokenExpiredError') {
+            tokens = generateTokens(user.name, user.email)
+          }
+
+          error = err
+          return
+        }
+
+        accessToken = jwt.sign(
+          {
+            name: user.name,
+            email: user.email,
+          },
+          process.env.NEXT_PUBLIC_ACCESS_TOKEN_KEY as string,
+          {
+            expiresIn: '10m',
+          }
+        )
+      })
 
       if ((error as unknown as VerifyErrors)?.name === 'TokenExpiredError') {
         return NextResponse.json(tokens)

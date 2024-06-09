@@ -3,17 +3,9 @@ import toast from 'react-hot-toast'
 import { ICartItem } from '@/types/cart'
 import { IProduct } from '@/types/common'
 import { idGenerator, isUserAuth } from './common'
-import {
-  addProductToCart,
-  setCartFromLS,
-  setShouldShowEmpty,
-} from '@/context/cart'
+import { addProductToCart, setCartFromLS, setShouldShowEmpty } from '@/context/cart'
 
-export const addItemToCart = (
-  product: IProduct,
-  setSpinner: (arg0: boolean) => void,
-  count: number
-) => {
+export const addItemToCart = (product: IProduct, setSpinner: (arg0: boolean) => void, count: number) => {
   if (!isUserAuth()) {
     addCartItemToLS(product, count)
     return
@@ -32,14 +24,8 @@ export const addItemToCart = (
   })
 }
 
-export const addCartItemToLS = (
-  product: IProduct,
-  count: number,
-  withToast = true
-) => {
-  let cartFromLS: ICartItem[] = JSON.parse(
-    localStorage.getItem('cart') as string
-  )
+export const addCartItemToLS = (product: IProduct, count: number, withToast = true) => {
+  let cartFromLS: ICartItem[] = JSON.parse(localStorage.getItem('cart') as string)
   const clientId = idGenerator()
 
   if (!cartFromLS) {
@@ -51,8 +37,7 @@ export const addCartItemToLS = (
   const existingItem = cartFromLS.find((item) => item.productId === product._id)
 
   if (existingItem) {
-    const updatedCountWithSize =
-      existingItem.count !== count ? count : +existingItem.count + 1
+    const updatedCountWithSize = existingItem.count !== count ? count : +existingItem.count + 1
     const updatedCart = cartFromLS.map((item) =>
       item.productId === existingItem.productId
         ? {
@@ -94,13 +79,10 @@ export const updateCartItemCountInLS = (cartItemId: string, count: number) => {
     cart = []
   }
 
-  const updatedCart = cart.map((item) =>
-    item.clientId === cartItemId ? { ...item, count } : item
-  )
+  const updatedCart = cart.map((item) => (item.clientId === cartItemId ? { ...item, count } : item))
 
   localStorage.setItem('cart', JSON.stringify(updatedCart))
   setCartFromLS(updatedCart as ICartItem[])
 }
 
-export const countWholeCartItemsAmount = (cart: ICartItem[]) =>
-  cart.reduce((defaultCount, item) => defaultCount + +item.count, 0)
+export const countWholeCartItemsAmount = (cart: ICartItem[]) => cart.reduce((defaultCount, item) => defaultCount + +item.count, 0)

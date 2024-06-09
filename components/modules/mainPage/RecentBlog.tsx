@@ -9,13 +9,7 @@ const RecentBlog = () => {
   const spinner = useUnit(getRecentBlogFx.pending)
   const { lang, translations } = useLang()
 
-  return (
-    <MainPageBlog
-      title={translations[lang].main_page.recent_blog_title}
-      goods={goods}
-      spinner={spinner}
-    />
-  )
+  return <MainPageBlog title={translations[lang].main_page.recent_blog_title} goods={goods} spinner={spinner} />
 }
 
 export default RecentBlog
