@@ -25,9 +25,7 @@ export async function GET(req: Request) {
       return goods
     }
 
-    const [arts] = await Promise.allSettled([
-      getFilteredCollection('arts'),
-    ])
+    const [arts] = await Promise.allSettled([getFilteredCollection('arts')])
 
     if (arts.status !== 'fulfilled') {
       return NextResponse.json(

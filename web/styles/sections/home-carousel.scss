@@ -1,62 +1,62 @@
 .homepage-carousel {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 
-    .holder-text {
-        padding: 20px;
-        position: absolute;
-        bottom: 0;
-        background: rgba(255, 255, 255, .8);
-        margin: 0 20px;
-        border-radius: 15px 15px 0 0;
-        font-family: auto;
+  .holder-text {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 0 20px;
+    border-radius: 15px 15px 0 0;
+    font-family: auto;
 
-        @include min-screen($screen__s) {
-            bottom: 25px;
-            max-width: 80%;
-            left: 50%;
-            width: 100%;
-            transform: translate3d(-50%, 0, 0);
-            text-align: center;
-            border-radius: 6px;
-        }
+    @include min-screen($screen__s) {
+      bottom: 25px;
+      max-width: 80%;
+      left: 50%;
+      width: 100%;
+      transform: translate3d(-50%, 0, 0);
+      text-align: center;
+      border-radius: 6px;
     }
+  }
 
-    .homepage-carousel-title {
-        margin: 0 0 15px;
+  .homepage-carousel-title {
+    margin: 0 0 15px;
 
-        @include min-screen($screen__l) {
-            font-size: 40px;
-            margin-bottom: 25px;
-        }
+    @include min-screen($screen__l) {
+      font-size: 40px;
+      margin-bottom: 25px;
     }
+  }
 
-    .homepage-carousel-text {
-        font-size: 17px;
+  .homepage-carousel-text {
+    font-size: 17px;
 
-        @include min-screen($screen__m) {
-            margin: auto;
-            width: 72%;
-            font-size: 20px;
-        }
+    @include min-screen($screen__m) {
+      margin: auto;
+      width: 72%;
+      font-size: 20px;
     }
+  }
 
-    picture {
-        padding: 0 0 150%;
+  picture {
+    padding: 0 0 150%;
 
-        @include min-screen($screen__s) {
-            padding: 0 0 55%;
-        }
-
-        @include min-screen($screen__m) {
-            padding: 0 0 45%;
-        }
-
-        @include min-screen($screen__xl) {
-            padding: 0 0 40%;
-        }
+    @include min-screen($screen__s) {
+      padding: 0 0 55%;
     }
 
     @include min-screen($screen__m) {
-        margin-bottom: 100px;
+      padding: 0 0 45%;
     }
+
+    @include min-screen($screen__xl) {
+      padding: 0 0 40%;
+    }
+  }
+
+  @include min-screen($screen__m) {
+    margin-bottom: 100px;
+  }
 }

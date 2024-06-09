@@ -34,11 +34,7 @@ export const $newProducts = goodsStoreInstance(getNewProductsFx)
 export const $recentBlog = goodsStoreInstance(getRecentBlogFx)
 
 export const loadOneProductFx = createEffect(
-  async ({
-    productId,
-    category,
-    setSpinner
-  }: ILoadOneProductFx) => {
+  async ({ productId, category, setSpinner }: ILoadOneProductFx) => {
     try {
       setSpinner && setSpinner(true)
       const { data } = await api.post('/api/goods/one', { productId, category })
@@ -111,7 +107,6 @@ const goodsSampleInstance = (
     clock: gate.open,
     target: effect,
   })
-
 
 goodsSampleInstance(getNewProductsFx, MainPageGate)
 goodsSampleInstance(getRecentBlogFx, MainPageGate)

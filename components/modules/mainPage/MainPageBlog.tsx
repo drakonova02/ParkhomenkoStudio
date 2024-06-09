@@ -3,7 +3,11 @@ import { motion } from 'framer-motion'
 import { basePropsForMotion } from '@/constants/motion'
 import BlogListItem from '../BlogListItem/BlogListItem'
 
-const MainPageSection = ({ title, goods, spinner }: IMainPageSectionBlogProps) => (
+const MainPageSection = ({
+  title,
+  goods,
+  spinner,
+}: IMainPageSectionBlogProps) => (
   <section className='section-slider blog-section'>
     <h2 className='section-title'>{title}</h2>
     {spinner && (

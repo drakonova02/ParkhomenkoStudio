@@ -43,21 +43,16 @@ const CartPage = () => {
                 {(isUserAuth()
                   ? cartSpinner || loginCheckSpinner
                   : cartSpinner) && (
-                  <motion.ul
-                    {...basePropsForMotion}
-                  >
+                  <motion.ul {...basePropsForMotion}>
                     {Array.from(new Array(3)).map((_, i) => (
                       <li key={i}>
-                        <div/>
+                        <div />
                       </li>
                     ))}
                   </motion.ul>
                 )}
                 {!cartSpinner && (
-                  <motion.ul
-                    {...basePropsForMotion}
-                    className={`list-reset`}
-                  >
+                  <motion.ul {...basePropsForMotion} className={`list-reset`}>
                     <CartList />
                   </motion.ul>
                 )}

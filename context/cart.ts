@@ -37,7 +37,7 @@ export const addProductsFromLSToCartFx = createEffect(
       if (data?.error) {
         const newData: { cartItems: ICartItem[] } = await handleJWTError(
           data.error.name,
-        {
+          {
             repeatRequestMethodName: 'addProductsFromLSToCartFx',
             payload: { items: cartItems },
           }
@@ -189,36 +189,36 @@ export const $shouldShowEmpty = cart
   .on(setShouldShowEmpty, (_, value) => value)
 
 sample({
-    clock: loadCartItems,
-    source: $cart,
-    fn: (_, data) => data,
-    target: getCartItemsFx,
-  })
-  
-  sample({
-    clock: addProductToCart,
-    source: $cart,
-    fn: (_, data) => data,
-    target: addProductToCartFx,
-  })
-  
-  sample({
-    clock: addProductsFromLSToCart,
-    source: $cart,
-    fn: (_, data) => data,
-    target: addProductsFromLSToCartFx,
-  })
-  
-  sample({
-    clock: updateCartItemCount,
-    source: $cart,
-    fn: (_, data) => data,
-    target: updateCartItemCountFx,
-  })
-  
-  sample({
-    clock: deleteProductFromCart,
-    source: $cart,
-    fn: (_, data) => data,
-    target: deleteCartItemFx,
-  })
+  clock: loadCartItems,
+  source: $cart,
+  fn: (_, data) => data,
+  target: getCartItemsFx,
+})
+
+sample({
+  clock: addProductToCart,
+  source: $cart,
+  fn: (_, data) => data,
+  target: addProductToCartFx,
+})
+
+sample({
+  clock: addProductsFromLSToCart,
+  source: $cart,
+  fn: (_, data) => data,
+  target: addProductsFromLSToCartFx,
+})
+
+sample({
+  clock: updateCartItemCount,
+  source: $cart,
+  fn: (_, data) => data,
+  target: updateCartItemCountFx,
+})
+
+sample({
+  clock: deleteProductFromCart,
+  source: $cart,
+  fn: (_, data) => data,
+  target: deleteCartItemFx,
+})

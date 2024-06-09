@@ -39,28 +39,28 @@ const Carousel = () => {
   return (
     <section className='homepage-carousel'>
       <Swiper
-          className='swiper-container'
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5,
-          }}
-          slidesPerView='auto'
-          autoplay={{
-            delay: 7000,
-            disableOnInteraction: false,
-          }}
-          pagination={{ clickable: true }}
-          onClick={handleSlideClick}
-          modules={[EffectCoverflow, Pagination, Autoplay]}
-        >
-          {slides.map((slide) => (
-            <SwiperSlide className='swiper-slide' key={slide.id}>
-              <HeroSlide slide={slide} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        className='swiper-container'
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
+        }}
+        slidesPerView='auto'
+        autoplay={{
+          delay: 7000,
+          disableOnInteraction: false,
+        }}
+        pagination={{ clickable: true }}
+        onClick={handleSlideClick}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
+      >
+        {slides.map((slide) => (
+          <SwiperSlide className='swiper-slide' key={slide.id}>
+            <HeroSlide slide={slide} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   )
 }

@@ -12,11 +12,11 @@ const MainPage = () => {
 
   return (
     <main>
-        <Carousel />
-        <NewGoods />
-        <Banner />
-        <RecentBlog />
-        <AboutUs />
+      <Carousel />
+      <NewGoods />
+      <Banner />
+      <RecentBlog />
+      <AboutUs />
     </main>
   )
 }

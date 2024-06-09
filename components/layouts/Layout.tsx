@@ -7,12 +7,12 @@ import SearchModal from '../modules/header/SearchModal'
 import Minicart from '../modules/header/minicart/Minicart'
 import { $openAuthPopup } from '@/context/auth'
 import AuthPopup from '../modules/AuthPopup/AuthPopup'
-import { $minicart, $searchModal } from '@/context/modals';
+import { $minicart, $searchModal } from '@/context/modals'
 import {
   addOverflowHiddenToBody,
   handleCloseAuthPopup,
   handleCloseSearchModal,
-  handleCloseMinicart
+  handleCloseMinicart,
 } from '@/lib/utils/common'
 import Footer from '../modules/footer/Footer'
 
@@ -38,12 +38,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  return ( 
-      <>
+  return (
+    <>
       <Header />
       {children}
       <AnimatePresence>
-      {openAuthPopup && (
+        {openAuthPopup && (
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +83,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       />
       <Footer />
     </>
-  );
+  )
 }
- 
-export default Layout;
+
+export default Layout

@@ -26,7 +26,7 @@ export interface IBlog {
   date: string
   author: string
 }
-          
+
 export interface IBaseEffectProps {
   jwt: string
   id: string

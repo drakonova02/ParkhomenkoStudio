@@ -23,23 +23,13 @@ export const getNewAndBestsellerGoods = async (db: Db, fieldName: string) => {
 
   console.log(arts)
 
-  return shuffle([
-    ...arts
-      .filter(
-        (item) =>
-          item[fieldName]
-      )
-      .slice(0, 4),
-  ])
+  return shuffle([...arts.filter((item) => item[fieldName]).slice(0, 4)])
 }
 
 export const getRecentBlog = async (db: Db) => {
   const blogs = await db.collection('blog').find().toArray()
 
-  return shuffle([
-    ...blogs
-      .slice(-2),
-  ])
+  return shuffle([...blogs.slice(-2)])
 }
 
 export const generateTokens = (name: string, email: string) => {

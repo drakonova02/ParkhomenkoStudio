@@ -1,28 +1,24 @@
-$screen__s        : 768px;
-$screen__m        : 1024px;
-$screen__l        : 1280px;
-$screen__xl       : 1440px;
-$screen__xxl      : 1600px;
+$screen__s: 768px;
+$screen__m: 1024px;
+$screen__l: 1280px;
+$screen__xl: 1440px;
+$screen__xxl: 1600px;
 
+$indent_block_s: 10px;
+$indent_block_m: 20px;
+$indent_block_l: 40px;
 
-$indent_block_s   : 10px;
-$indent_block_m   : 20px;
-$indent_block_l   : 40px;
+$white: #fff;
+$black: #000;
+$bezel: #f5f5f5;
+$dark_bezel: #9f968a;
+$grey: #f0f0f0;
+$dark_grey: #e5e5e5;
 
+$quick: 0.15s;
+$fast: 0.3s;
+$normal: 0.5s;
 
-$white            : #fff;
-$black            : #000;
-$bezel            : #F5F5F5;
-$dark_bezel       : #9F968A;
-$grey             : #F0F0F0;
-$dark_grey        : #e5e5e5;
-
-
-$quick            : .15s;
-$fast             : .3s;
-$normal           : .5s;
-
-
-$font-family-name__base : 'Libre';
+$font-family-name__base: 'Libre';
 $font-family-name__secondary: 'PlayfairDisplay';
 $font-family-name__third: sans-serif;

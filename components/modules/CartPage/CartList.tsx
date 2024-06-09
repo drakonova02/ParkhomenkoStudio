@@ -10,10 +10,7 @@ const CartList = () => {
     <>
       <AnimatePresence>
         {currentCartByAuth.map((item) => (
-          <motion.li
-            key={item._id || item.clientId}
-            {...basePropsForMotion}
-          >
+          <motion.li key={item._id || item.clientId} {...basePropsForMotion}>
             <CartListItem item={item} />
           </motion.li>
         ))}

@@ -10,12 +10,20 @@ const Banner = () => {
   return (
     <section className='homepage-banner'>
       <picture>
-        <Image src={img} alt={translations[lang].main_page.banner_title} loading='eager' />
+        <Image
+          src={img}
+          alt={translations[lang].main_page.banner_title}
+          loading='eager'
+        />
       </picture>
 
-      <div className="holder-text">
-        <h2 className='banner-title'>{translations[lang].main_page.banner_title}</h2>
-        <p className='banner-text'>{translations[lang].main_page.banner_descrioptin}</p>
+      <div className='holder-text'>
+        <h2 className='banner-title'>
+          {translations[lang].main_page.banner_title}
+        </h2>
+        <p className='banner-text'>
+          {translations[lang].main_page.banner_descrioptin}
+        </p>
         <Link className='action secondary' href='/exhibition'>
           {translations[lang].common.more}
         </Link>

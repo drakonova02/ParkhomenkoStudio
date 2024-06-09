@@ -1,10 +1,7 @@
 import { useUnit } from 'effector-react'
 import { useMemo, useState } from 'react'
 import { isUserAuth } from '@/lib/utils/common'
-import {
-  addCartItemToLS,
-  addItemToCart,
-} from '@/lib/utils/cart'
+import { addCartItemToLS, addItemToCart } from '@/lib/utils/cart'
 import { updateCartItemCount } from '@/context/cart'
 import { useGoodsByAuth } from './useGoodsByAuth'
 import { $currentProduct } from '@/context/goods'
@@ -44,11 +41,7 @@ export const useCartAction = (isSizeTable = false) => {
     }
 
     if (isSizeTable) {
-      addItemToCart(
-        product,
-        setAddToCartSpinner,
-        countFromCounter || 1
-      )
+      addItemToCart(product, setAddToCartSpinner, countFromCounter || 1)
       return
     }
   }

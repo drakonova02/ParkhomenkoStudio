@@ -1,6 +1,6 @@
 'use client'
 import toast from 'react-hot-toast'
-import { createDomain, sample  } from 'effector'
+import { createDomain, sample } from 'effector'
 import {
   IGetParkhomenkoOfficesByCityFx,
   IMakePaymentFx,
@@ -24,7 +24,8 @@ export const setChosenCourierAddressData =
 export const setShouldShowCourierAddressData = order.createEvent<boolean>()
 export const getParkhomenkoOfficesByCity =
   order.createEvent<IGetParkhomenkoOfficesByCityFx>()
-export const setCourierAddressData = order.createEvent<IParkhomenkoAddressData>()
+export const setCourierAddressData =
+  order.createEvent<IParkhomenkoAddressData>()
 export const setOnlinePaymentTb = order.createEvent<boolean>()
 export const setCashPaymentTb = order.createEvent<boolean>()
 export const makePayment = order.createEvent<IMakePaymentFx>()
@@ -96,7 +97,6 @@ export const paymentNotifyFx = order.createEffect(
     }
   }
 )
-
 
 export const $ParkhomenkoDataByCity = order
   .createStore<IParkhomenkoAddressData[]>([])

@@ -14,7 +14,8 @@ import { IOrderInfoBlockProps } from '@/types/modules'
 import { useGoodsByAuth } from '@/hooks/useGoodsByAuth'
 import { $cart, $cartFromLs } from '@/context/cart'
 import {
-  makePayment, makePaymentFx,
+  makePayment,
+  makePaymentFx,
   $chosenCourierAddressData,
   $chosenPickupAddressData,
   $onlinePaymentTab,
@@ -115,15 +116,11 @@ const OrderInfoBlock = ({
             lang
           )}{' '}
           {translations[lang].order.worth}{' '}
-          <span>
-            {formatPrice(animatedPrice)} ₽
-          </span>
+          <span>{formatPrice(animatedPrice)} ₽</span>
         </p>
         <p>
           {translations[lang].order.amount_with_discounts}:{' '}
-          <span>
-            {priceWithDiscount} ₽
-          </span>
+          <span>{priceWithDiscount} ₽</span>
         </p>
         {isOrderPage && (
           <>
@@ -147,9 +144,7 @@ const OrderInfoBlock = ({
         )}
         <p>
           <span>{translations[lang].order.total}:</span>
-          <span>
-            {priceWithDiscount} ₽
-          </span>
+          <span>{priceWithDiscount} ₽</span>
         </p>
         {isOrderPage ? (
           <button
@@ -178,15 +173,10 @@ const OrderInfoBlock = ({
             checked={isUserAgree}
           />
           <span />
-          <span
-            tabIndex={0}
-            onKeyDown={handleTabCheckbox}
-          />
+          <span tabIndex={0} onKeyDown={handleTabCheckbox} />
           <span>
             {translations[lang].order.agreement_text}{' '}
-            <Link
-              href='/privacy'
-            >
+            <Link href='/privacy'>
               {translations[lang].order.agreement_link}
             </Link>
           </span>

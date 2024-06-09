@@ -30,7 +30,11 @@ const AuthPopupLogin = ({ toggleAuth, isSideActive }: IAuthSideProps) => {
       <form onSubmit={handleSubmit(submitForm)}>
         <EmailInput register={register} errors={errors} />
         <PasswordInput register={register} errors={errors} />
-        <button className='inner__btn action primary' type='submit' disabled={spinner}>
+        <button
+          className='inner__btn action primary'
+          type='submit'
+          disabled={spinner}
+        >
           {translations[lang].auth_popup.login_text}
         </button>
         <p className='line-text'>{translations[lang].common.or}</p>

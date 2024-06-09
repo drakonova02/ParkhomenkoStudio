@@ -30,9 +30,7 @@ const MinicartItem = ({ item }: { item: ICartItem }) => {
           href={`/catalog/${item.category}/${item.productId}`}
           className='cart-list__item__title'
         >
-          <span>
-            {item.name.replace('.', '')}
-          </span>
+          <span>{item.name.replace('.', '')}</span>
         </Link>
         <div className='cart-list__item__bottom'>
           <span className='cart-list__item__price'>

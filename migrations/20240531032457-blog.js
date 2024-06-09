@@ -3,7 +3,7 @@ const { faker } = require('@faker-js/faker')
 
 const getRandomArrayValue = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
-const img = ['/img/banner/Пархоменко_Ранок_2006,_20_30,_ДВП,_олія.jpg'];
+const img = ['/img/banner/Пархоменко_Ранок_2006,_20_30,_ДВП,_олія.jpg']
 
 module.exports = {
   async up(db) {
@@ -23,5 +23,5 @@ module.exports = {
 
   async down(db, client) {
     return db.collection('blog').updateMany([])
-  }
-};
+  },
+}

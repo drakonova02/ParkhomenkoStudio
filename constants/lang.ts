@@ -1,4 +1,4 @@
 export enum AllowedLangs {
-    UK = 'uk',
-    EN = 'en',
-  }
+  UK = 'uk',
+  EN = 'en',
+}

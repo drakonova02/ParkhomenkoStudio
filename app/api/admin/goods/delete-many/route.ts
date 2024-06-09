@@ -30,9 +30,7 @@ export async function GET(req: Request) {
       })
     }
 
-    await Promise.allSettled([
-      deleteManyFromCollection('arts')
-    ])
+    await Promise.allSettled([deleteManyFromCollection('arts')])
 
     return NextResponse.json(
       {

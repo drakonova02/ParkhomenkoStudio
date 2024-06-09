@@ -32,7 +32,7 @@ export async function GET(req: Request) {
         productItem: {
           ...productItem,
           id: productItem?._id,
-          images: productItem?.images
+          images: productItem?.images,
         },
       },
       corsHeaders

@@ -48,9 +48,7 @@ export const addCartItemToLS = (
 
   setShouldShowEmpty(false)
 
-  const existingItem = cartFromLS.find(
-    (item) => item.productId === product._id
-  )
+  const existingItem = cartFromLS.find((item) => item.productId === product._id)
 
   if (existingItem) {
     const updatedCountWithSize =
@@ -58,7 +56,7 @@ export const addCartItemToLS = (
     const updatedCart = cartFromLS.map((item) =>
       item.productId === existingItem.productId
         ? {
-            ...existingItem
+            ...existingItem,
           }
         : item
     )
@@ -79,7 +77,7 @@ export const addCartItemToLS = (
       name: product.name,
       price: product.price,
       inStock: product.inStock,
-      category: product.category
+      category: product.category,
     },
   ]
   localStorage.setItem('cart', JSON.stringify(cart))

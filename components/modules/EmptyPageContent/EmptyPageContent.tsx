@@ -7,7 +7,7 @@ const EmptyPageContent = ({
   description,
   btnText,
   title,
-  oopsWord
+  oopsWord,
 }: IEmptyPageContentProps) => {
   const { lang, translations } = useLang()
   const currentTitle = title ? title : translations[lang].common.empty_text
@@ -16,8 +16,8 @@ const EmptyPageContent = ({
   return (
     <div className='no-found'>
       <ContentTitle title={currentTitle} oopsWord={currentOopsWord} />
-        <div className='description'>{description}</div>
-        <ContentLinks btnText={btnText} />
+      <div className='description'>{description}</div>
+      <ContentLinks btnText={btnText} />
     </div>
   )
 }

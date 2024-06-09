@@ -1,174 +1,177 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    min-height: 100vh;
-    color: $black;
-    font: 400 18px/1.2 'PlayfairDisplay';
-    background-color: $bezel;
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  color: $black;
+  font: 400 18px/1.2 'PlayfairDisplay';
+  background-color: $bezel;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    &.overflow-hidden {
-        overflow: hidden;
-    }
+  &.overflow-hidden {
+    overflow: hidden;
+  }
 }
 
 main {
-    position: relative;
-    z-index: 0;
+  position: relative;
+  z-index: 0;
 }
 
-ul, ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-    background: transparent;
-    box-shadow: none;
-    border: 0;
-    cursor: pointer;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
 }
 
-
 input {
-    width: 100%;
-    height: 36px;
-    padding: 5px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    border: 0;
-    border-bottom: 1px solid $dark_bezel;
-    cursor: pointer;
+  width: 100%;
+  height: 36px;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 0;
+  border-bottom: 1px solid $dark_bezel;
+  cursor: pointer;
 
-    &:focus-visible {
-        outline: 0 !important;
-    }
+  &:focus-visible {
+    outline: 0 !important;
+  }
 }
 
 picture {
-    position: relative;
-    display: block;
-    height: 0;
+  position: relative;
+  display: block;
+  height: 0;
 
-    img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .swiper-pagination {
-    display: flex;
-    padding: 25px;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
+  display: flex;
+  padding: 25px;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .swiper-pagination-bullet {
-    width: 25px;
-    height: 3px;
-    display: block;
-    background: #d9d9d9;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: width $fast, background-color $fast;
+  width: 25px;
+  height: 3px;
+  display: block;
+  background: #d9d9d9;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    width $fast,
+    background-color $fast;
 
-    &-active {
-        width: 44px;
-        background-color: $dark_bezel;
-    }
+  &-active {
+    width: 44px;
+    background-color: $dark_bezel;
+  }
 }
 
 .close-icon {
+  position: absolute;
+  cursor: pointer;
+  box-sizing: content-box;
+  padding: 10px;
+  transition: opacity $fast;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:after,
+  &:before {
     position: absolute;
-    cursor: pointer;
-    box-sizing: content-box;
-    padding: 10px;
-    transition: opacity $fast;
+    top: 50%;
+    left: 10px;
+    content: '';
+    width: calc(100% - 20px);
+    height: 3px;
+    transform: rotate(45deg);
+    transform-origin: center;
+    background-color: $black;
+  }
 
-    &:hover {
-        opacity: .5;
-    }
-
-    &:after,
-    &:before {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        content: '';
-        width: calc(100% - 20px);
-        height: 3px;
-        transform: rotate(45deg);
-        transform-origin: center;
-        background-color: $black;
-    }
-
-    &:after {
-        transform: rotate(-45deg);
-    }
+  &:after {
+    transform: rotate(-45deg);
+  }
 }
 
 .overlay-display {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity $fast;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $fast;
 
-    &.active {
-        opacity: 1;
-        pointer-events: all;
-        transition: opacity 3s;
-    }
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 3s;
+  }
 }
 
 .action {
-    display: block;
-    min-width: 275px;
-    margin: 0 auto 20px;
-    text-align: center;
-    padding: 12px;
-    border-radius: 3px;
-    font-size: 22px;
-    font-family: $font-family-name__secondary;
-    transition: opacity $fast;
+  display: block;
+  min-width: 275px;
+  margin: 0 auto 20px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 22px;
+  font-family: $font-family-name__secondary;
+  transition: opacity $fast;
 
-    &.primary {
-        background: $dark_bezel;
-        color: #fff;
-    }
+  &.primary {
+    background: $dark_bezel;
+    color: #fff;
+  }
 
-    &.secondary {
-        border: 1px solid $dark_bezel;
-        color: $dark_bezel;
-    }
+  &.secondary {
+    border: 1px solid $dark_bezel;
+    color: $dark_bezel;
+  }
 
-    &:hover {
-        opacity: .6;
-    }
+  &:hover {
+    opacity: 0.6;
+  }
 }

@@ -6,7 +6,7 @@ import {
   closeSearchModal,
   closeAuthModal,
   closeMinicart,
-  closeShareModal
+  closeShareModal,
 } from '@/context/modals'
 import { loginCheck } from '@/context/user'
 import { ICartItem } from '@/types/cart'
@@ -83,7 +83,6 @@ export const idGenerator = () => {
   )
 }
 
-
 export const handleOpenAuthPopup = () => {
   addOverflowHiddenToBody()
   openAuthPopup()
@@ -117,7 +116,6 @@ export const triggerLoginCheck = () => {
 
 export const isItemInList = (array: ICartItem[], productId: string) =>
   array.some((item) => item.productId === productId)
-
 
 // export const getCartItemCountBySize = (
 //   cartItems: ICartItem[],

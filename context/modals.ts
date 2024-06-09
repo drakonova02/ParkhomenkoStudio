@@ -18,9 +18,9 @@ export const $searchModal = modals
   .on(closeSearchModal, () => false)
 
 export const $authhModal = modals
-.createStore(false)
-.on(openAuthModal, () => true)
-.on(closeAuthModal, () => false)
+  .createStore(false)
+  .on(openAuthModal, () => true)
+  .on(closeAuthModal, () => false)
 
 export const $minicart = modals
   .createStore(false)

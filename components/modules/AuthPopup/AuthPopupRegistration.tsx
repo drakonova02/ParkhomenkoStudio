@@ -36,7 +36,13 @@ const AuthPopupRegistration = ({
         <NameInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />
         <PasswordInput register={register} errors={errors} />
-        <button className='inner__btn action primary' type='submit' disabled={spinner}>{translations[lang].auth_popup.registration_text}</button>
+        <button
+          className='inner__btn action primary'
+          type='submit'
+          disabled={spinner}
+        >
+          {translations[lang].auth_popup.registration_text}
+        </button>
         <p className='line-text'>{translations[lang].common.or}</p>
         <AuthPopupSocials handleSignupWithOAuth={handleSignupWithOAuth} />
         <div className='inner__bottom'>

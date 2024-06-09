@@ -3,10 +3,10 @@ const { faker } = require('@faker-js/faker')
 
 const getRandomArrayValue = (arr) => arr[Math.floor(Math.random() * arr.length)]
 
-const year     = ['2003', '2004', '2005', '2006']
+const year = ['2003', '2004', '2005', '2006']
 const material = ['oil', 'acril', 'paper', 'aquarel']
-const size     = ['80-90 ', '55-90', '40-60', '70-50']
-const img      = ['/img/banner/Пархоменко_Ранок_2006,_20_30,_ДВП,_олія.jpg'];
+const size = ['80-90 ', '55-90', '40-60', '70-50']
+const img = ['/img/banner/Пархоменко_Ранок_2006,_20_30,_ДВП,_олія.jpg']
 
 module.exports = {
   async up(db) {
@@ -36,5 +36,5 @@ module.exports = {
 
   async down(db, client) {
     return db.collection('arts').updateMany([])
-  }
-};
+  },
+}

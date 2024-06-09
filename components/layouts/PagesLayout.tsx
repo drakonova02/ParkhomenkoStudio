@@ -13,9 +13,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 // import CookieAlert from '../modules/CookieAlert/CookieAlert'
 import { $openAuthPopup } from '@/context/auth'
-import {
-  $shareModal
-} from '@/context/modals'
+import { $shareModal } from '@/context/modals'
 import '@/context/goods'
 import '@/context/auth'
 // import '@/context/cart'
