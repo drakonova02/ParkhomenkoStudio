@@ -1,0 +1,121 @@
+.page-footer {
+    color: $white;
+    background-color: $dark_bezel;
+
+    .page-footer-main {
+        padding: $indent-block-l $indent_block_m $indent_block_s;
+        font-size: 16px;
+
+        @include min-screen($screen__s) {
+            max-width: 1280px;
+            margin: 0 auto 50px;
+        }
+    }
+
+    .lang-list {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .button-lang {
+        width: 30px;
+        height: 30px;
+        color: $white;
+        border: 1px solid $white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin-bottom: $indent_block_m;
+
+        @include min-screen($screen__m) {
+            margin-bottom: $indent_block_l;
+
+            svg {
+                width: 350px !important;
+            }
+        }
+    }
+
+    h4 {
+        margin-bottom: 7px;
+    }
+
+    .footer-link-list {
+        margin-bottom: $indent_block_m;
+
+        li {
+            margin-bottom: 5px;
+        }
+    }
+
+    .newsletter {
+        h3, p {
+            margin-bottom: $indent_block_s;
+        }
+
+        input {
+            padding: 0 10px 0 50px;
+            color: $white;
+            background-color: transparent;
+            border: 1px solid $dark_grey;
+
+            &::placeholder {
+                color: $white;
+              }
+        } 
+
+        .newsletter-form {
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 5px;
+                left: 14px;
+            }
+        }
+
+        @include min-screen($screen__s) {
+            max-width: 330px;
+        }
+    }
+
+    .page-footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        padding: $indent_block_m;
+        border-top: 1px solid $bezel;
+        font-size: 14px;
+
+        @include min-screen($screen__s) {
+            gap: 50px;
+        }
+    }
+
+    .page-footer-icons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        @include min-screen($screen__s) {
+            width: auto;
+        }
+    }
+
+    @include min-screen($screen__s) {
+        .footer-holder {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

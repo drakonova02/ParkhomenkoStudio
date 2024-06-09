@@ -1,0 +1,54 @@
+//
+//  Typography
+//  _____________________________________________
+
+@mixin lib-font-face(
+    $family-name,
+    $font-path,
+    $font-weight: normal,
+    $font-style: normal
+) {
+    @font-face {
+        font-family: $family-name;
+        src: url('#{$font-path}.woff2') format('woff2'),
+        url('#{$font-path}.woff') format('woff');
+        font-weight: $font-weight;
+        font-style: $font-style;
+        font-display: swap;
+    }
+}
+
+@include lib-font-face(
+    $family-name: $font-family-name__base,
+    $font-path: '../../public/fonts/LibreBaskerville-Bold',
+    $font-weight: 500,
+    $font-style: normal
+);
+
+@include lib-font-face(
+    $family-name: $font-family-name__base,
+    $font-path: '../../public/fonts/LibreBaskerville-Italic',
+    $font-weight: 400,
+    $font-style: italic
+);
+
+@include lib-font-face(
+    $family-name: $font-family-name__base,
+    $font-path: '../../public/fonts/LibreBaskerville-Regular',
+    $font-weight: 400,
+    $font-style: normal
+);
+
+@include lib-font-face(
+    $family-name: $font-family-name__secondary,
+    $font-path: '../../public/fonts/PlayfairDisplay-Italic',
+    $font-weight: 400,
+    $font-style: italic
+);
+
+@include lib-font-face(
+    $family-name: $font-family-name__secondary,
+    $font-path: '../../public/fonts/PlayfairDisplay-Regular',
+    $font-weight: 400,
+    $font-style: normal
+);

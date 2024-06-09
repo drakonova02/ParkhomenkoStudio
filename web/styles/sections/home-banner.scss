@@ -1,0 +1,64 @@
+.homepage-banner {
+    position: relative;
+    margin-bottom: 50px;
+
+    .holder-text {
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate3d(-50%, -50%, 0);
+        padding: 20px;
+        font-family: auto;
+        color: $white;
+        text-align: center;
+
+        @include min-screen($screen__s) {
+            max-width: 750px;
+            width: 100%;
+        }
+    }
+
+    .banner-title {
+        margin: 0 0 15px;
+
+        @include min-screen($screen__l) {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+    }
+
+    .banner-text {
+        font-size: 17px;
+        margin-bottom: 20px;
+
+        @include min-screen($screen__m) {
+            margin: 0 auto 40px;
+            width: 72%;
+            font-size: 20px;
+        }
+    }
+
+    .action {
+        min-width: 100px;
+        font-size: 17px;
+        max-width: 250px;
+        width: 50%;
+        border-color: $white;
+        color: $white;
+    }
+
+    picture {
+        padding: 0 0 90%;
+        filter: brightness(.7);
+
+        @include min-screen($screen__m) {
+            padding: 0 0 40%;
+        }
+    }
+
+    @include min-screen($screen__m) {
+        margin-bottom: 100px;
+    }
+}

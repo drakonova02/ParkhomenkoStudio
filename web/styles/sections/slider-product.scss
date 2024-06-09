@@ -1,0 +1,66 @@
+.section-slider:not(.blog-section) {
+    margin: 0 0 50px;
+    padding: 0 10px;
+
+    .section-title {
+        margin-bottom: 20px;
+        font-size: 36px;
+        text-align: center;
+
+        @include min-screen($screen__m) {
+            font-size: 45px;
+            margin-bottom: 40px;
+        }
+    }
+
+    li {
+        margin-bottom: 40px;
+
+        @include min-screen($screen__s) {
+            padding: 0 5px;
+            width: 50%;
+        }
+
+        @include min-screen($screen__m) {
+            padding: 0 5px;
+            width: 25%;
+        }
+    }
+
+    .title-product {
+        margin-bottom: 5px;
+    }
+
+    .detail {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+
+    .available {
+        color: mediumseagreen;
+    }
+
+    picture {
+        margin-bottom: 10px;
+        padding: 0 0 75%;
+    }
+
+    @include min-screen($screen__s) {
+        padding: 0 20px;
+        margin-bottom: 100px;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -5px;
+        }
+    }
+
+    @include min-screen($screen__m) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

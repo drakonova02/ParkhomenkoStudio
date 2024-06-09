@@ -1,0 +1,102 @@
+.page-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: $indent_block_s $indent_block_m;
+
+    a {
+        transition: opacity $fast;
+
+        &:hover {
+            opacity: .3;
+        }
+    }
+
+    @include min-screen($screen__s) {
+        justify-content: flex-start;
+        box-shadow: 0 0px 3px 1px $dark_bezel;
+    }
+
+    @include min-screen($screen__m) {
+        padding: $indent_block_m $indent_block_l;
+    }
+}
+
+.header-links, 
+.navigation ul {
+    display: flex;
+    gap: 10px;
+
+    @include min-screen($screen__m) {
+        gap: 20px;
+    }
+}
+
+.logo {
+    display: block;
+    
+    svg {
+        width: 200px;
+
+        @include min-screen($screen__s) {
+            width: 300px !important;
+        }
+    }
+}
+
+.navigation {
+    width: 100%;
+    margin-top: 20px;
+    order: 5;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        font-size: 15px;
+        letter-spacing: .1em;
+    }
+
+    @include min-screen($screen__s) {
+        width: auto !important;
+        margin: 0;
+        order: unset;
+    }
+
+    @include min-screen($screen__m) {
+        margin-left: 20px;
+
+        ul {
+            font-size: 18px;
+        }
+    }
+}
+
+.search-block {
+    order: 6;
+}
+
+.header-links {
+    align-items: center;
+
+    li {
+        display: flex;
+        align-items: center;
+    }
+
+    svg {
+        width: 20px;
+    }
+
+    @include min-screen($screen__s) {
+        margin: 0 0 0 auto;
+    }
+
+    @include min-screen($screen__m) {
+        svg {
+            width: 24px;
+        }
+    }
+}
